@@ -1,0 +1,34 @@
+<div class="container">
+
+  <h1 class="display-4">Search History</h1>
+
+  <div class="container">
+    <form class="form-group row" [formGroup]="queryForm" novalidate>
+      <label class="col-2 col-form-label col-form-label-lg">I`m looking for</label>
+      <div class="col-8">
+        <input type="text" class="form-control form-control-lg" formControlName="query" placeholder="Text of my search request" [(ngModel)]="inputValue">
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-secondary btn-lg" (click)="send(queryForm.value.query)">Find</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="container" *ngFor="let item of items | async;  let i = index">
+    <div class="row">
+      <div class="col-10">
+        {{item.date}}
+        <p>{{item.message}}</p>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-secondary btn-lg" (click)="delete(item.$key)">Delete</button>
+      </div>  
+    </div>
+    <hr class="my-4">
+  </div>
+</div>
+
+
+<!--<input type="text" id="message" placeholder="What is it that you do?" (keyup.enter)="send($event.target.value)" [(ngModel)]="msgVal" />-->
+<!--<div>Form value: {{queryForm.value.query | json}}</div>
+  <div>Form status: {{queryForm.status | json }}</div>-->

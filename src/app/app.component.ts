@@ -12,6 +12,7 @@ import * as firebase from 'firebase/app';
 export class AppComponent {
   items: FirebaseListObservable<any[]>;
   inputValue = '';
+  numberRequests: number;
 
   queryForm: FormGroup = new FormGroup({
     query: new FormControl('', [ Validators.required, Validators.maxLength(100)])
@@ -19,6 +20,7 @@ export class AppComponent {
 
   constructor( public firebase: AngularFireDatabase) {
     this.getItems();
+    this.items.subscribe( items => this.numberRequests = items.length);
   }
 
   send(data: string) {

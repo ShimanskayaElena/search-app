@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
@@ -9,27 +9,31 @@ import * as firebase from 'firebase/app';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   items: FirebaseListObservable<any[]>;
-  inputValue = '';
+  inputValue: string;
   numberRequests: number;
+  queryForm: FormGroup;
 
-  queryForm: FormGroup = new FormGroup({
-    query: new FormControl('', [ Validators.required, Validators.maxLength(100)])
-  });
+  constructor( public firebase: AngularFireDatabase) {}
 
-  constructor( public firebase: AngularFireDatabase) {
+  ngOnInit() {
+    this.queryForm = new FormGroup({
+      query: new FormControl('', [ Validators.required, Validators.maxLength(100)])
+    });
+
     this.getItems();
+
     this.items.subscribe( items => this.numberRequests = items.length);
   }
 
-  send(data: string) {
+  send(data: string): void {
     // get the number of milliseconds at the time of sending the request
-    const time = new Date().getTime();
+    const time: number = new Date().getTime();
     // enter the parameter by which queries will be sorted
-    const sorting = 1 / time;
+    const sorting: number = 1 / time;
     // Get the date and time the query was created in an easy-to-read format
-    const dateString = this.getDateString(time);
+    const dateString: string = this.getDateString(time);
    // save request to Firebase
     this.items.push({
       message: data,
@@ -40,19 +44,19 @@ export class AppComponent {
     this.inputValue = '';
   }
 
-  delete(key) {
+  delete(key: string): void {
     this.items.remove(key);
   }
 
-  getItems() {
-    this.items = this.firebase.list('/messages', {
+  getItems(): Observable<any[]> {
+    return this.items = this.firebase.list('/messages', {
       query: {
         orderByChild: 'sorting'
       }
     }) as FirebaseListObservable<any[]>;
   }
 
-  getDateString(milliseconds) {
+  getDateString(milliseconds: number): string {
     const date = new Date(milliseconds);
     const day = date.getDate();
     const month = date.getMonth();

@@ -11,6 +11,11 @@
       <div class="col-2">
         <button type="button" class="btn btn-secondary btn-lg" (click)="send(queryForm.value.query)">Find</button>
       </div>
+      <div class="col-6" *ngIf="queryForm.controls.query.invalid">
+        <div *ngIf="queryForm.controls.query.errors.maxlength" class="alert alert-danger">
+          The number of characters entered must not exceed 100!
+        </div>
+      </div>
     </form>
   </div>
 

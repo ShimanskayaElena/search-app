@@ -1,38 +1,44 @@
-<div class="container">
-
-  <h1 class="display-4">Search History</h1>
-
-  <div class="container">
-    <form class="form-group row" [formGroup]="queryForm" novalidate>
-      <label class="col-2 col-form-label col-form-label-lg">I`m looking for</label>
-      <div class="col-8">
-        <input type="text" class="form-control form-control-lg" formControlName="query" placeholder="Text of my search request" [(ngModel)]="inputValue">
-      </div>
-      <div class="col-2">
-        <button type="button" class="btn btn-secondary btn-lg" (click)="send(queryForm.value.query)">Find</button>
-      </div>
-      <div class="col-6" *ngIf="queryForm.controls.query.invalid">
-        <div *ngIf="queryForm.controls.query.errors.maxlength" class="alert alert-danger">
-          The number of characters entered must not exceed 100!
-        </div>
-      </div>
-    </form>
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="col-12 display-4">Search History</h1>  
   </div>
 
-  <h3>Search history - {{numberRequests}} request(s)</h3>
-  
-  <div class="container" *ngFor="let item of items | async;  let i = index">
-    <div class="row">
-      <div class="col-10">
-        {{item.date}}
-        <p>{{item.message}}</p>
-      </div>
-      <div class="col-2">
-        <button type="button" class="btn btn-secondary btn-lg" (click)="delete(item.$key)">Delete</button>
-      </div>  
+  <form class="row form-group" [formGroup]="queryForm" novalidate>
+    <div class="col-12 col-sm-12 col-md-3 col-lg-2">
+      <label class="col-form-label">I`m looking for</label>
     </div>
-    <hr class="my-4">
+    <div class="col-8 col-md-7 col-lg-8">
+      <input type="text" class="form-control" formControlName="query" placeholder="Text of my search request" [(ngModel)]="inputValue">
+    </div>
+    <div class="col-2">
+      <button type="button" class="btn btn-secondary" (click)="send(queryForm.value.query)">Find</button>
+    </div>
+    <div class="col-12" *ngIf="queryForm.controls.query.invalid">
+      <div *ngIf="queryForm.controls.query.errors.maxlength" class="alert alert-danger">
+        The number of characters entered must not exceed 100!
+      </div>
+    </div>
+  </form>
+
+  <div class="row">
+    <div class="col-12">
+      <h3>Search history - {{numberRequests}} request(s)</h3>
+    </div>
   </div>
+
+  <div class="row" *ngFor="let item of items | async;  let i = index">
+    <div class="col-10">
+      {{item.date}}
+      <p>{{item.message}}</p>
+    </div>
+    <div class="col-2">
+      <button type="button" class="btn btn-secondary" (click)="delete(item.$key)">Delete</button>
+    </div>
+    <div class="col-12">
+      <hr class="my-4">
+    </div>  
+  </div>
+
 </div>
 
 

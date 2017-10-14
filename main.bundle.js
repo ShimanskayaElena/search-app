@@ -1,4 +1,4 @@
-webpackJsonp([1],{
+webpackJsonp([2],{
 
 /***/ "../../../../../src async recursive":
 /***/ (function(module, exports) {
@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/*h1,h3 {\r\n    margin: 2rem 0;\r\n}\r\n\r\nform {\r\n    margin-bottom: 4rem;\r\n}\r\n\r\np {\r\n    font-size: 2rem;\r\n}*/\r\n", ""]);
+exports.push([module.i, "form {\r\n    margin-top: 2rem;\r\n}\r\n\r\n.delete {\r\n    margin-left: 5rem;\r\n}\r\n\r\n@media screen and (min-width: 1201px) {}\r\n\r\n@media screen and (max-width: 1200px) {\r\n    h3 {\r\n        color: grey;\r\n    }\r\n}\r\n\r\n@media screen and (max-width: 992px) {}\r\n\r\n@media screen and (max-width: 768px) {\r\n\r\n    h3 {\r\n        font-size: 20px;\r\n        font-weight: 600;\r\n    }\r\n}\r\n\r\n@media screen and (max-width: 576px) {\r\n    .delete {\r\n        margin-left: 2rem;\r\n    }\r\n}", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <div class=\"row\">\n    <h1 class=\"col-12 display-4\">Search History</h1>  \n  </div>\n\n  <form class=\"row form-group\" [formGroup]=\"queryForm\" novalidate>\n    <div class=\"col-12 col-sm-12 col-md-3 col-lg-2\">\n      <label class=\"col-form-label\">I`m looking for</label>\n    </div>\n    <div class=\"col-8 col-md-7 col-lg-8\">\n      <input type=\"text\" class=\"form-control\" formControlName=\"query\" placeholder=\"Text of my search request\" [(ngModel)]=\"inputValue\">\n    </div>\n    <div class=\"col-2\">\n      <button type=\"button\" class=\"btn btn-secondary\" (click)=\"send(queryForm.value.query)\">Find</button>\n    </div>\n    <div class=\"col-12\" *ngIf=\"queryForm.controls.query.invalid\">\n      <div *ngIf=\"queryForm.controls.query.errors.maxlength\" class=\"alert alert-danger\">\n        The number of characters entered must not exceed 100!\n      </div>\n    </div>\n  </form>\n\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <h3>Search history - {{numberRequests}} request(s)</h3>\n    </div>\n  </div>\n\n  <div class=\"row\" *ngFor=\"let item of items | async;  let i = index\">\n    <div class=\"col-10\">\n      {{item.date}}\n      <p>{{item.message}}</p>\n    </div>\n    <div class=\"col-2\">\n      <button type=\"button\" class=\"btn btn-secondary\" (click)=\"delete(item.$key)\">Delete</button>\n    </div>\n    <div class=\"col-12\">\n      <hr class=\"my-4\">\n    </div>  \n  </div>\n\n</div>\n\n\n<!--<input type=\"text\" id=\"message\" placeholder=\"What is it that you do?\" (keyup.enter)=\"send($event.target.value)\" [(ngModel)]=\"msgVal\" />-->\n<!--<div>Form value: {{queryForm.value.query | json}}</div>\n  <div>Form status: {{queryForm.status | json }}</div>-->"
+module.exports = "<div class=\"container-fluid\">\n  \n  <form class=\"row form-group\" [formGroup]=\"queryForm\" novalidate>\n    <div class=\"col-12 col-sm-12 col-md-3 col-lg-2\">\n      <label class=\"col-form-label\">I`m looking for</label>\n    </div>\n    <div class=\"col-8 col-md-7 col-lg-8\">\n      <input type=\"text\" class=\"form-control\" formControlName=\"query\" placeholder=\"Text of my search request\" [(ngModel)]=\"inputValue\">\n    </div>\n    <div class=\"col-2\">\n      <button type=\"button\" class=\"btn btn-secondary\" (click)=\"send(queryForm.value.query)\">Find</button>\n    </div>\n    <div class=\"col-12\" *ngIf=\"queryForm.controls.query.invalid\">\n      <div *ngIf=\"queryForm.controls.query.errors.maxlength\" class=\"alert alert-danger\">\n        The number of characters entered must not exceed 100!\n      </div>\n    </div>\n  </form>\n\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <h3>Search history - {{numberRequests}} request(s)</h3>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\" *ngFor=\"let item of items | async;  let i = index\">\n    <div class=\"col-10\">\n      {{item.date}}\n      <p>\n        {{item.message}}\n        <button type=\"button\" class=\"btn btn-secondary delete\" (click)=\"delete(item.$key)\">Delete</button>\n      </p>\n    </div>\n    <!--<div class=\"col-2\">\n      <button type=\"button\" class=\"btn btn-secondary\" (click)=\"delete(item.$key)\">Delete</button>\n    </div>-->\n    <div class=\"col-12\">\n      <hr class=\"my-4\">\n    </div>  \n  </div>\n\n</div>\n\n\n<!--<input type=\"text\" id=\"message\" placeholder=\"What is it that you do?\" (keyup.enter)=\"send($event.target.value)\" [(ngModel)]=\"msgVal\" />-->\n<!--<div>Form value: {{queryForm.value.query | json}}</div>\n  <div>Form status: {{queryForm.status | json }}</div>-->"
 
 /***/ }),
 
@@ -225,7 +225,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("../../../../../src/main.ts");
@@ -233,5 +233,5 @@ module.exports = __webpack_require__("../../../../../src/main.ts");
 
 /***/ })
 
-},[0]);
+},[1]);
 //# sourceMappingURL=main.bundle.js.map

@@ -1,11 +1,31 @@
-/*h1,h3 {
-    margin: 2rem 0;
-}
-
 form {
-    margin-bottom: 4rem;
+    margin-top: 2rem;
 }
 
-p {
-    font-size: 2rem;
-}*/
+.delete {
+    margin-left: 5rem;
+}
+
+@media screen and (min-width: 1201px) {}
+
+@media screen and (max-width: 1200px) {
+    h3 {
+        color: grey;
+    }
+}
+
+@media screen and (max-width: 992px) {}
+
+@media screen and (max-width: 768px) {
+
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .delete {
+        margin-left: 2rem;
+    }
+}

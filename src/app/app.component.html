@@ -1,8 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
-    <h1 class="col-12 display-4">Search History</h1>  
-  </div>
-
+  
   <form class="row form-group" [formGroup]="queryForm" novalidate>
     <div class="col-12 col-sm-12 col-md-3 col-lg-2">
       <label class="col-form-label">I`m looking for</label>
@@ -26,14 +23,17 @@
     </div>
   </div>
 
-  <div class="row" *ngFor="let item of items | async;  let i = index">
+  <div class="row justify-content-center" *ngFor="let item of items | async;  let i = index">
     <div class="col-10">
       {{item.date}}
-      <p>{{item.message}}</p>
+      <p>
+        {{item.message}}
+        <button type="button" class="btn btn-secondary delete" (click)="delete(item.$key)">Delete</button>
+      </p>
     </div>
-    <div class="col-2">
+    <!--<div class="col-2">
       <button type="button" class="btn btn-secondary" (click)="delete(item.$key)">Delete</button>
-    </div>
+    </div>-->
     <div class="col-12">
       <hr class="my-4">
     </div>  
